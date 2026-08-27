@@ -1,97 +1,168 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-CA">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>The Memory Bowl — 43 years of Saddledome memories, mapped to the seats that held them</title>
-<meta name="description" content="The official Saddledome seating map is a static JPG. This one is a living bowl: 43 years of Calgarian memories glowing in the sections that held them, while the wrecking-ball countdown runs. Built for the Cursor Calgary hackathon by calgarysaddledome.com." />
-<meta property="og:title" content="SIT ANYWHERE. FIND A MEMORY THERE." />
-<meta property="og:description" content="A seating map reinvented as a heatmap of feeling. Real filings from SEC 222, 112, 119, 104 and the floor. Days until the wrecking ball: 308." />
-<link rel="icon" type="image/svg+xml" href="favicon.svg" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Source+Sans+3:wght@400;600;700&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-<header class="site-header wrap">
-<p class="kicker">calgarysaddledome.com · civic memory archive</p>
-<h1>SIT ANYWHERE. <em>FIND A MEMORY THERE.</em></h1>
-<p class="sub">43 years of memories, mapped to the seats that held them</p>
-<div class="meta-row">
-<p class="countdown" id="countdown">
-<span class="countdown-label">Days until the wrecking ball</span>
-<span class="board" id="days-n">308</span>
-</p>
-<p class="live-badge" id="live-badge" hidden><i></i> LIVE</p>
-<div class="toggle" role="group" aria-label="Bowl palette">
-<button type="button" id="btn-game" aria-pressed="true">GAME NIGHT</button>
-<button type="button" id="btn-concert" aria-pressed="false">CONCERT</button>
-</div>
-</div>
-</header>
-<main>
-<section class="bowl-section wrap" id="bowl" aria-labelledby="bowl-heading">
-<h2 id="bowl-heading" class="visually-hidden">Saddledome memory map</h2>
-<div class="bowl-frame" id="bowl-frame">
-<svg class="bowl" id="bowl-svg" viewBox="0 0 1000 780" role="img" aria-label="Saddledome seating bowl">
-<title>Saddledome seating bowl</title>
-<text x="500" y="400" text-anchor="middle" fill="#f4ead8" font-size="18">
-The bowl draws itself from ellipses — open this page with JavaScript to sit anywhere.
-</text>
-</svg>
-</div>
-<div class="legend">
-<div class="legend-scale">
-<span>fewer memories</span>
-<span class="legend-bar" aria-hidden="true"></span>
-<span>more memories</span>
-</div>
-<p><strong id="total-n">449</strong> memories in the bowl</p>
-</div>
-</section>
-<section class="archive wrap" id="real-filings" aria-labelledby="real-heading">
-<h2 id="real-heading">Five real filings from the archive</h2>
-<p class="sub" style="margin-bottom:12px">
-These are verbatim. Click their sections on the bowl — 104, 112, 119, 222, FLOOR.
-</p>
-<div class="archive-list">
-<article>
-<p class="filed">FILED BY DAVE · 1989 · FLAMES</p>
-<p class="body">Age 14 in the nosebleeds with my dad when Lanny won the Cup. My dad passed in 2019.</p>
-</article>
-<article>
-<p class="filed">FILED BY MICHELLE · 2000 · CONCERT</p>
-<p class="body">Gord walked out on stage and the whole Dome just roared... My friend Sarah and I held hands and sang every word. We were 22 and felt invincible.</p>
-</article>
-<article>
-<p class="filed">FILED BY RYAN · 2004 · FLAMES</p>
-<p class="body">Watched the final period from the concourse. Strangers hugging. We'll get em next year.</p>
-</article>
-<article>
-<p class="filed">FILED BY KAREN · 1988 · OLYMPICS</p>
-<p class="body">Volunteer usher at the opening ceremony. I kept the volunteer jacket 38 years.</p>
-</article>
-<article>
-<p class="filed">FILED BY BRETT · 2015 · CONCERT</p>
-<p class="body">Beer vibrated off the armrest during Thunderstruck. Ears rang for three days.</p>
-</article>
-</div>
-</section>
-</main>
-<aside id="panel" class="panel" aria-hidden="true">
-<button type="button" class="panel-close" aria-label="Close">✕</button>
-<h2 id="panel-title">SEC 222</h2>
-<p class="panel-count" id="panel-count">1 memory in the archive</p>
-<div id="panel-list"></div>
-<a class="file-link" id="file-link" href="https://calgarysaddledome.com/memories/new?section=222">File yours from SEC 222</a>
-</aside>
-<div id="tooltip" class="tooltip" hidden>SEC 222 · 1 memory</div>
-<footer class="disclaimer wrap">
-A seating map reinvented as a civic memory. Not the official Scotiabank Saddledome site.
-Cursor Calgary micro-hackathon. <a href="https://calgarysaddledome.com">calgarysaddledome.com</a>
-</footer>
-<script src="data.js"></script>
-<script src="app.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      The Memory Bowl — 43 years of Saddledome memories, mapped to the seats
+      that held them
+    </title>
+    <meta
+      name="description"
+      content="The official Saddledome seating map is a static JPG. This one is a living bowl: 43 years of Calgarian memories glowing in the sections that held them, while the wrecking-ball countdown runs. Built for the Cursor Calgary hackathon by calgarysaddledome.com."
+    />
+    <meta property="og:title" content="SIT ANYWHERE. FIND A MEMORY THERE." />
+    <meta
+      property="og:description"
+      content="A seating map reinvented as a heatmap of feeling. Real filings from SEC 222, 112, 119, 104 and the floor. Days until the wrecking ball: 308."
+    />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header wrap">
+      <p class="kicker">calgarysaddledome.com · civic memory archive</p>
+      <h1>SIT ANYWHERE. <em>FIND A MEMORY THERE.</em></h1>
+      <p class="sub">
+        43 years of memories, mapped to the seats that held them — click a
+        section to sit down, click a seat to file yours
+      </p>
+      <div class="meta-row">
+        <p class="countdown" id="countdown">
+          <span class="countdown-label">Days until the wrecking ball</span>
+          <span class="board" id="days-n">308</span>
+        </p>
+        <p class="live-badge" id="live-badge" hidden><i></i> LIVE</p>
+        <div class="toggle" role="group" aria-label="Bowl palette">
+          <button type="button" id="btn-game" aria-pressed="true">
+            GAME NIGHT
+          </button>
+          <button type="button" id="btn-concert" aria-pressed="false">
+            CONCERT
+          </button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <section
+        class="bowl-section wrap"
+        id="bowl"
+        aria-labelledby="bowl-heading"
+      >
+        <h2 id="bowl-heading" class="visually-hidden">Saddledome memory map</h2>
+        <div class="bowl-frame" id="bowl-frame">
+          <button type="button" id="back-to-bowl" class="back-btn" hidden>
+            ← Back to the bowl
+          </button>
+          <svg
+            class="bowl"
+            id="bowl-svg"
+            viewBox="0 0 1000 780"
+            role="img"
+            aria-label="Saddledome seating bowl"
+          >
+            <title>Saddledome seating bowl</title>
+            <text
+              x="500"
+              y="400"
+              text-anchor="middle"
+              fill="#f4ead8"
+              font-size="18"
+            >
+              The bowl draws itself from ellipses — open this page with
+              JavaScript to sit anywhere.
+            </text>
+          </svg>
+        </div>
+        <div class="legend">
+          <div class="legend-scale">
+            <span>fewer memories</span>
+            <span class="legend-bar" aria-hidden="true"></span>
+            <span>more memories</span>
+          </div>
+          <p><strong id="total-n">449</strong> memories in the bowl</p>
+        </div>
+      </section>
+      <section
+        class="archive wrap"
+        id="real-filings"
+        aria-labelledby="real-heading"
+      >
+        <h2 id="real-heading">Five real filings from the archive</h2>
+        <p class="sub" style="margin-bottom: 12px">
+          These are verbatim. Click their sections on the bowl — 104, 112, 119,
+          222, FLOOR.
+        </p>
+        <div class="archive-list">
+          <article>
+            <p class="filed">FILED BY DAVE · 1989 · FLAMES</p>
+            <p class="body">
+              Age 14 in the nosebleeds with my dad when Lanny won the Cup. My
+              dad passed in 2019.
+            </p>
+          </article>
+          <article>
+            <p class="filed">FILED BY MICHELLE · 2000 · CONCERT</p>
+            <p class="body">
+              Gord walked out on stage and the whole Dome just roared... My
+              friend Sarah and I held hands and sang every word. We were 22 and
+              felt invincible.
+            </p>
+          </article>
+          <article>
+            <p class="filed">FILED BY RYAN · 2004 · FLAMES</p>
+            <p class="body">
+              Watched the final period from the concourse. Strangers hugging.
+              We'll get em next year.
+            </p>
+          </article>
+          <article>
+            <p class="filed">FILED BY KAREN · 1988 · OLYMPICS</p>
+            <p class="body">
+              Volunteer usher at the opening ceremony. I kept the volunteer
+              jacket 38 years.
+            </p>
+          </article>
+          <article>
+            <p class="filed">FILED BY BRETT · 2015 · CONCERT</p>
+            <p class="body">
+              Beer vibrated off the armrest during Thunderstruck. Ears rang for
+              three days.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+    <aside id="panel" class="panel" aria-hidden="true">
+      <button type="button" class="panel-close" aria-label="Close">✕</button>
+      <h2 id="panel-title">SEC 222</h2>
+      <p class="panel-count" id="panel-count">1 memory in the archive</p>
+      <div id="panel-list"></div>
+      <div id="panel-form-mount"></div>
+    </aside>
+    <div id="tooltip" class="tooltip" hidden>SEC 222 · 1 memory</div>
+    <footer class="disclaimer wrap">
+      A seating map reinvented as a civic memory. Not the official Scotiabank
+      Saddledome site. Cursor Calgary micro-hackathon.
+      <a href="https://calgarysaddledome.com">calgarysaddledome.com</a>
+    </footer>
+    <script>
+      // Public read/write config for the live archive (protected by
+      // row-level security; the key is a publishable client key).
+      window.MEMORY_BOWL_REMOTE = {
+        url: "https://elveyyrehnygyichgvwf.supabase.co",
+        key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVsdmV5eXJlaG55Z3lpY2hndndmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODY2Njc0MjQsImV4cCI6MjEwMjI0MzQyNH0.NGPdQzuxlSzmC1aqvorwHxlkju5X8jUKtML79lqutB4",
+        mediaFn:
+          "https://elveyyrehnygyichgvwf.supabase.co/functions/v1/memory-media",
+      };
+    </script>
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+  </body>
 </html>
