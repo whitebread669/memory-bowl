@@ -400,3 +400,31 @@ transition: transform 100ms ease, stroke 100ms ease, stroke-width 100ms ease;
   font-size: 12px;
   padding: 8px 0 28px;
 }
+
+/* v2: seat-level zoom */
+.back-btn { position: absolute; top: 8px; left: 8px; z-index: 12; background: #16100a; border: 1px solid #4a3418; color: var(--cream); padding: 8px 14px; font: inherit; font-weight: 700; letter-spacing: 0.12em; font-size: 11px; text-transform: uppercase; cursor: pointer; }
+.back-btn[hidden] { display: none; }
+svg.zoomed .sec-label, svg.zoomed .floor-label { display: none; }
+svg.zoomed .section { opacity: 0.35; transition: opacity 300ms ease; }
+svg.zoomed .section.hot-pulse { animation: none; }
+.seat { fill: rgba(244, 234, 216, 0.14); stroke: rgba(244, 234, 216, 0.28); stroke-width: 0.25; cursor: pointer; transition: fill 120ms ease; }
+.seat:hover { fill: rgba(244, 234, 216, 0.55); }
+.seat-has { fill: var(--heat); stroke: #e2c27a; stroke-width: 0.35; }
+.seat-has:hover { fill: #e2c27a; }
+/* v2: filing form */
+.memory-form { margin-top: 22px; border-top: 1px solid #3a2a16; padding-top: 16px; }
+.memory-form h3 { font-family: "Playfair Display", serif; font-size: 18px; margin-bottom: 4px; }
+.panel-sub { font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream-dim); margin: 10px 0 4px; }
+.form-row { display: flex; gap: 8px; }
+.form-row input:first-child { flex: 2; }
+.form-row input:last-child { flex: 1; }
+.memory-form input, .memory-form select, .memory-form textarea { width: 100%; margin-top: 8px; background: #16100a; border: 1px solid #4a3418; color: var(--cream); padding: 9px 10px; font: inherit; font-size: 14px; border-radius: 2px; }
+.memory-form textarea { font-family: "Playfair Display", Georgia, serif; resize: vertical; }
+.memory-form input:focus, .memory-form select:focus, .memory-form textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+.file-btn { margin-top: 12px; width: 100%; padding: 11px 14px; background: var(--heat); color: var(--cream); border: 0; font: inherit; font-weight: 700; letter-spacing: 0.08em; font-size: 12px; text-transform: uppercase; cursor: pointer; }
+.file-btn:disabled { opacity: 0.55; cursor: wait; }
+.form-status { margin-top: 8px; font-size: 12px; color: var(--cream-dim); min-height: 1.2em; }
+/* v2: media + tags */
+.memory-media { display: block; width: 100%; margin-top: 8px; border: 1px solid #d8c9a8; border-radius: 2px; }
+.seat-tag { display: inline-block; font-size: 9px; letter-spacing: 0.1em; border: 1px solid #6a5428; color: #6a5428; padding: 0 5px; margin-left: 6px; }
+.memory-card.just-filed { outline: 2px solid var(--gold); outline-offset: 2px; }
